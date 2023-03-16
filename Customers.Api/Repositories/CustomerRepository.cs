@@ -13,7 +13,7 @@ public class CustomerRepository : ICustomerRepository
         _connectionFactory = connectionFactory;
     }
 
-    public async Task<bool> CreateAsync(CustomerDto customer)
+    public async Task<bool> CreateAsync(CustomerDataDto customer)
     {
         using var connection = await _connectionFactory.CreateConnectionAsync();
         var result = await connection.ExecuteAsync(
@@ -23,20 +23,20 @@ public class CustomerRepository : ICustomerRepository
         return result > 0;
     }
 
-    public async Task<CustomerDto?> GetAsync(Guid id)
+    public async Task<CustomerDataDto?> GetAsync(Guid id)
     {
         using var connection = await _connectionFactory.CreateConnectionAsync();
-        return await connection.QuerySingleOrDefaultAsync<CustomerDto>(
+        return await connection.QuerySingleOrDefaultAsync<CustomerDataDto>(
             "SELECT * FROM Customers WHERE Id = @Id LIMIT 1", new { Id = id });
     }
 
-    public async Task<IEnumerable<CustomerDto>> GetAllAsync()
+    public async Task<IEnumerable<CustomerDataDto>> GetAllAsync()
     {
         using var connection = await _connectionFactory.CreateConnectionAsync();
-        return await connection.QueryAsync<CustomerDto>("SELECT * FROM Customers");
+        return await connection.QueryAsync<CustomerDataDto>("SELECT * FROM Customers");
     }
 
-    public async Task<bool> UpdateAsync(CustomerDto customer)
+    public async Task<bool> UpdateAsync(CustomerDataDto customer)
     {
         using var connection = await _connectionFactory.CreateConnectionAsync();
         var result = await connection.ExecuteAsync(

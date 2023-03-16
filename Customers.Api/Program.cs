@@ -1,4 +1,7 @@
+using Amazon.SQS;
 using Customers.Api.Database;
+using Customers.Api.Infrastructure.MessageQueue.Messages;
+using Customers.Api.Infrastructure.MessageQueue.Sqs;
 using Customers.Api.Repositories;
 using Customers.Api.Services;
 using Customers.Api.Validation;
@@ -27,12 +30,17 @@ SqlMapper.AddTypeHandler(new GuidTypeHandler());
 SqlMapper.RemoveTypeMap(typeof(Guid));
 SqlMapper.RemoveTypeMap(typeof(Guid?));
 
+builder.Services.Configure<QueueSettings>(builder.Configuration.GetSection("QueueSettings"));
+builder.Services.AddSingleton<IAmazonSQS, AmazonSQSClient>();
+
 builder.Services.AddSingleton<IDbConnectionFactory>(_ =>
     new SqliteConnectionFactory(config.GetValue<string>("Database:ConnectionString")!));
+builder.Services.AddSingleton<IQueueMessenger, SqsQueueMessenger>();
 builder.Services.AddSingleton<DatabaseInitializer>();
-builder.Services.AddSingleton<ICustomerRepository, CustomerRepository>();
-builder.Services.AddSingleton<ICustomerService, CustomerService>();
 builder.Services.AddSingleton<IGitHubService, GitHubService>();
+
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 
 builder.Services.AddHttpClient("GitHub", httpClient =>
 {

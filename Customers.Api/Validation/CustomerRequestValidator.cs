@@ -4,7 +4,7 @@ using FluentValidation;
 
 namespace Customers.Api.Validation;
 
-public partial class CustomerRequestValidator : AbstractValidator<CustomerRequest>
+public partial class CustomerRequestValidator : AbstractValidator<CreateCustomerRequest>
 {
     public CustomerRequestValidator()
     {
