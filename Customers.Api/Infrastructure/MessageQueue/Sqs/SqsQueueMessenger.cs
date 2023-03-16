@@ -7,6 +7,7 @@ namespace Customers.Api.Infrastructure.MessageQueue.Sqs;
 
 public class SqsQueueMessenger : IQueueMessenger
 {
+    private const string DefaultMessageDataType = "String";
     private readonly IAmazonSQS _sqs;
     private readonly IOptions<QueueSettings> _queueSettings;
     private readonly ILogger<SqsQueueMessenger> _logger;
@@ -29,10 +30,10 @@ public class SqsQueueMessenger : IQueueMessenger
             MessageAttributes = new Dictionary<string, MessageAttributeValue>
             {
                 {
-                    "MesssageType",
+                    _queueSettings.Value.MessageAttributes.Type,
                     new MessageAttributeValue
                     {
-                        DataType = "String",
+                        DataType = DefaultMessageDataType,
                         StringValue = typeof(T).Name
                     }
                 }

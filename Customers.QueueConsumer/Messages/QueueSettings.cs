@@ -1,4 +1,4 @@
-﻿namespace Customers.Api.Infrastructure.MessageQueue.Sqs;
+﻿namespace Customers.QueueConsumer.Messages;
 
 public class QueueSettings
 {
@@ -11,4 +11,5 @@ public class MessageAttributes
 {
     public required string Type { get; set; }
 }
+
 

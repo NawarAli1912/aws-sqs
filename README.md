@@ -20,10 +20,12 @@ AWS_REGION=us-east-1
 
 ## Usage
 
-The aws-sqs consists of two parts:
+The aws-sqs consists of three parts:
 
 - The Basics folder: This folder contains a basic example that demonstrates how to publish and receive messages using AWS SQS. You can learn how to create, send, and receive messages between different services or components.
-- The Customers.Api folder: This folder contains a web API project that uses Dapper, Fluent Validation, and AWS SQS. You can learn how to create a RESTful API with CRUD operations and integrate AWS SQS to handle messages. In addition, the API validates user input by making an API call to a third-party service that checks the validity of GitHub usernames.
+- The Customers.Api folder: This folder contains a web API project that uses Dapper, Fluent Validation, and AWS SQS. You can learn how to create a RESTful API with CRUD operations and integrate AWS SQS to handle publishing messages. In addition, the API validates user input by making an API call to a third-party service that checks the validity of GitHub usernames.
+- the Customer.QueueConsumer: which is a asp web project that runs a background service to consume the queue messages that was published by the Customer.Api project, it uses *MediatR* to send the message to the proper consumer handler.
+
 
 ## License
 
