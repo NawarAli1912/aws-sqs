@@ -1,6 +1,8 @@
-# AWS SQS Demo App
+#aws-sqs
+The aws-sqs is a sample application that demonstrates how to use AWS Simple Queue Service (SQS) 
+to handle messaging between different services or components.
 
-This is a demo application that demonstrates how to work with AWS Simple Queue Service (SQS).
+---
 
 ## Installation
 
@@ -13,16 +15,15 @@ AWS_ACCESS_KEY_ID=your_access_key_id
 AWS_SECRET_ACCESS_KEY=your_secret_access_key
 AWS_REGION=us-east-1
 ```
-3. Set your queue name in the app code (e.g., in Program.cs).
+3. open the solution with any editor you like.
 4. Run the app using `dotnet run`.
 
 ## Usage
 
-To use the app, follow these steps:
+The AWS-SQS Demo App consists of two parts:
 
-1. Start the app using `dotnet run`.
-2. Use the app to create a queue, send messages to the queue, and receive messages from the queue.
-3. When you're finished, use the app to delete the queue.
+- The Basics folder: This folder contains a basic example that demonstrates how to publish and receive messages using AWS SQS. You can learn how to create, send, and receive messages between different services or components.
+- The Customers.Api folder: This folder contains a web API project that uses Dapper, Fluent Validation, and AWS SQS. You can learn how to create a RESTful API with CRUD operations and integrate AWS SQS to handle messages. In addition, the API validates user input by making an API call to a third-party service that checks the validity of GitHub usernames.
 
 ## License
 
