@@ -5,7 +5,7 @@ namespace Customers.Api.Mapping;
 
 public static class DtoToDomainMapper
 {
-    public static Customer ToCustomer(this CustomerDataDto customerDto)
+    public static Customer ToCustomer(this CustomerDAO customerDto)
     {
         return new Customer
         {

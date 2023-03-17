@@ -4,13 +4,13 @@ namespace Customers.Api.Repositories;
 
 public interface ICustomerRepository
 {
-    Task<bool> CreateAsync(CustomerDataDto customer);
+    Task<bool> CreateAsync(CustomerDAO customer);
 
-    Task<CustomerDataDto?> GetAsync(Guid id);
+    Task<CustomerDAO?> GetAsync(Guid id);
 
-    Task<IEnumerable<CustomerDataDto>> GetAllAsync();
+    Task<IEnumerable<CustomerDAO>> GetAllAsync();
 
-    Task<bool> UpdateAsync(CustomerDataDto customer);
+    Task<bool> UpdateAsync(CustomerDAO customer);
 
     Task<bool> DeleteAsync(Guid id);
 }

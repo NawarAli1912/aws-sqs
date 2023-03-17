@@ -1,6 +1,6 @@
 ﻿namespace Customers.Api.Contracts.Data;
 
-public class CustomerDataDto
+public class CustomerDAO
 {
     public Guid Id { get; init; } = default!;
 
